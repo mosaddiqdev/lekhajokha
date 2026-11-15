@@ -1,0 +1,19 @@
+/* The only place colours live. Components read these, never hex values. */
+:root {
+  color-scheme: dark;
+
+  --bg: #151617;
+  --surface: #1e1f21;
+  --raised: #272829;
+  --border: rgb(255 255 255 / 0.08);
+
+  --text: #ece9e4;
+  --text-quiet: #a19d96;
+
+  /* Brass: Save, active state, focus. Nothing else. */
+  --accent: #d9a441;
+
+  /* Money only: baki is owed to the shop, jama is money received. */
+  --baki: #d6736b;
+  --jama: #6fb58a;
+}
