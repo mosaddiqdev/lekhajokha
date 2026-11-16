@@ -1,0 +1,25 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: var(--app-height, 100dvh);
+  background: var(--bg);
+}
+
+.fields {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) 0;
+  overflow-y: auto;
+}
+
+/* Save stays in the thumb zone, above the keyboard. */
+.actions {
+  padding: var(--space-3) var(--space-4)
+    calc(var(--space-3) + env(safe-area-inset-bottom));
+}
+
+.save {
+  width: 100%;
+}

@@ -10,6 +10,7 @@
 - `src/engine` has no React and no browser APIs. The amount parser gets a test there before any screen uses it.
 - Balance (baki) is worked out from entries. It is never stored or typed by hand.
 - Colours live only in `src/styles/tokens.css`. Each component owns a `*.module.css`.
+- One brass element per screen: the thing you most likely do next. On a laptop's two panes, each pane gets one.
 - Delete code nobody uses. Git remembers it.
 
 # Words in the app

@@ -1,25 +1,30 @@
+import { type CustomerInput, checkCustomer } from "../engine/customerInput";
 import { type Customer, db } from "./db";
 
-// Names can repeat: a shop often has two Rameshes. The screen asks before
-// adding a second one, so nothing here blocks it.
-export async function addCustomer(input: {
-  name: string;
-  phone?: string;
-}): Promise<Customer> {
-  const name = input.name.trim();
-  if (name === "") throw new Error("A customer needs a name");
-
-  const phone = input.phone?.replace(/[\s-]/g, "");
-  if (phone !== undefined && phone !== "" && !/^\d{10}$/.test(phone)) {
-    throw new Error("A mobile number is 10 digits");
-  }
-
+// Names can repeat: a shop often has two Rameshes. The form only warns about
+// it, so nothing here blocks a second one.
+export async function addCustomer(input: CustomerInput): Promise<Customer> {
   const customer: Customer = {
     id: crypto.randomUUID(),
-    name,
     createdAt: Date.now(),
-    ...(phone ? { phone } : {}),
+    ...valid(input),
   };
   await db.customers.add(customer);
   return customer;
+}
+
+export async function updateCustomer(id: string, input: CustomerInput): Promise<void> {
+  const { name, phone } = valid(input);
+  // An undefined phone removes the number the customer had.
+  await db.customers.update(id, { name, phone });
+}
+
+export async function deleteCustomer(id: string): Promise<void> {
+  await db.customers.update(id, { deletedAt: Date.now() });
+}
+
+function valid(input: CustomerInput): { name: string; phone?: string } {
+  const check = checkCustomer(input);
+  if (!check.ok) throw new Error(check.message);
+  return check.value;
 }

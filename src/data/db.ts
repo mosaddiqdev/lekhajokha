@@ -6,6 +6,9 @@ export type Customer = {
   name: string;
   phone?: string;
   createdAt: number;
+  // A deleted customer leaves the list but keeps every entry, so nothing in
+  // the ledger is ever lost to one tap.
+  deletedAt?: number;
 };
 
 // One typed part of an entry: "2*45" and its worked-out paise. The text is kept

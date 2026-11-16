@@ -1,12 +1,11 @@
 import { type PointerEvent, type ReactNode, useEffect, useRef, useState } from "react";
 import styles from "./BottomSheet.module.css";
+import { WIDE } from "./viewport";
 
 type Props = { open: boolean; onClose: () => void; label: string; children: ReactNode };
 
 // Past this many pixels of downward drag, letting go closes the sheet.
 const DISMISS_DRAG = 90;
-// Wide screens get a side panel, which can't be dragged down.
-const WIDE = "(min-width: 900px)";
 
 export function BottomSheet({ open, onClose, label, children }: Props) {
   // mounted keeps the sheet in the page while it slides out. shown is the

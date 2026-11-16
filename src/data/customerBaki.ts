@@ -22,16 +22,32 @@ export async function listCustomerBaki(): Promise<CustomerBaki[]> {
     byCustomer.set(entry.customerId, list);
   }
 
-  return customers.map((customer) => {
-    const own = byCustomer.get(customer.id) ?? [];
-    const lastEntryDate = own
-      .map((entry) => entry.date)
-      .sort()
-      .at(-1);
-    return {
-      customer,
-      baki: baki(own),
-      ...(lastEntryDate ? { lastEntryDate } : {}),
-    };
-  });
+  return customers
+    .filter((customer) => customer.deletedAt === undefined)
+    .map((customer) => summarise(customer, byCustomer.get(customer.id) ?? []));
+}
+
+// null when there is no such customer or they were deleted.
+export async function getCustomerBaki(
+  id: string,
+): Promise<(CustomerBaki & { entryCount: number }) | null> {
+  const customer = await db.customers.get(id);
+  if (!customer || customer.deletedAt !== undefined) return null;
+
+  const entries = (await db.entries.where("customerId").equals(id).toArray()).filter(
+    (entry) => entry.deletedAt === undefined,
+  );
+  return { ...summarise(customer, entries), entryCount: entries.length };
+}
+
+function summarise(customer: Customer, entries: Entry[]): CustomerBaki {
+  const lastEntryDate = entries
+    .map((entry) => entry.date)
+    .sort()
+    .at(-1);
+  return {
+    customer,
+    baki: baki(entries),
+    ...(lastEntryDate ? { lastEntryDate } : {}),
+  };
 }
