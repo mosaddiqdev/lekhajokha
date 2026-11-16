@@ -1,0 +1,44 @@
+.amount {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 500;
+  line-height: 1;
+  /* Digits all share one width, so a column of amounts lines up. */
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.amount[data-size="hero"] {
+  font-size: var(--text-hero);
+  letter-spacing: -0.04em;
+}
+
+.amount[data-size="amount"] {
+  font-size: var(--text-amount);
+  letter-spacing: -0.03em;
+}
+
+.amount[data-size="title"] {
+  font-size: var(--text-title);
+  letter-spacing: -0.02em;
+}
+
+.amount[data-tone="baki"] {
+  color: var(--baki);
+}
+
+.amount[data-tone="jama"] {
+  color: var(--jama);
+}
+
+/* The rupee sign sits back so the figure leads. */
+.rupee {
+  margin-right: 0.08em;
+  font-size: 0.56em;
+  font-weight: 500;
+  opacity: 0.72;
+}
+
+.sign {
+  margin-right: 0.04em;
+}

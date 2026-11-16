@@ -1,0 +1,38 @@
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 var(--space-2);
+}
+
+.name {
+  font-size: var(--text-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.kind {
+  color: var(--baki);
+  font-size: var(--text-caption);
+  font-weight: 500;
+}
+
+.total {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-2) var(--space-4);
+}
+
+/* A fixed line height keeps the sheet from jumping when the hint goes away. */
+.typed {
+  min-height: 1.4em;
+  color: var(--text-quiet);
+  font-size: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.save {
+  width: 100%;
+  margin-top: var(--space-3);
+}

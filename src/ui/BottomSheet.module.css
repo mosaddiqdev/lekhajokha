@@ -1,0 +1,72 @@
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: var(--scrim);
+  opacity: 0;
+  transition: opacity var(--slow) var(--ease);
+}
+
+.scrim[data-shown="true"] {
+  opacity: 1;
+}
+
+/* Outer radius 28 with 12 of padding leaves keys at 16: the curves are concentric. */
+.sheet {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 var(--space-3) calc(var(--space-3) + env(safe-area-inset-bottom));
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 var(--border);
+  outline: none;
+  transform: translateY(100%);
+  transition: transform var(--slow) var(--ease);
+}
+
+.sheet[data-shown="true"] {
+  transform: translateY(0);
+}
+
+/* The grab zone is 28px tall for a thumb, the visible bar only 4. */
+.grabber {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  touch-action: none;
+}
+
+.bar {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--pressed);
+}
+
+/* On a laptop the same sheet becomes a panel from the right edge. */
+@media (min-width: 900px) {
+  .sheet {
+    top: 0;
+    left: auto;
+    width: 420px;
+    max-width: none;
+    margin: 0;
+    padding-top: var(--space-5);
+    border-radius: var(--radius-sheet) 0 0 var(--radius-sheet);
+    box-shadow: inset 1px 0 0 var(--border);
+    transform: translateX(100%);
+  }
+
+  .sheet[data-shown="true"] {
+    transform: translateX(0);
+  }
+
+  .grabber {
+    display: none;
+  }
+}
