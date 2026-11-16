@@ -6,13 +6,13 @@ The first user is one neighbourhood shop. Customers never log in.
 
 ## Status
 
-Built one small step at a time. Done so far: Steps 0 and 1.
+Built one small step at a time. Done so far: Steps 0 to 2.
 
 | Step | What | Done |
 | --- | --- | --- |
 | 0 | Foundation | yes |
 | 1 | Amount engine (`2*45 + 120` to paise) | yes |
-| 2 | Data layer (customers, entries, baki) | |
+| 2 | Data layer (customers, entries, baki) | yes |
 | 3 | Design system and keypad | |
 | 4 | Home: customer list, add customer | |
 | 5 | Customer ledger | |
@@ -38,7 +38,8 @@ npm run format   # Biome lint and format
 
 ```
 src/
-  engine/     amount parser and money math. No React, no browser APIs.
+  engine/     amount parser and the baki rule. No React, no browser APIs.
+  data/       the phone database (Dexie): customers, entries, baki per customer
   styles/     tokens.css (all colours), base.css
 ```
 
