@@ -1,0 +1,28 @@
+.screen {
+  height: var(--app-height, 100dvh);
+  background: var(--bg);
+}
+
+.body {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.caption {
+  margin: 0;
+  color: var(--text-quiet);
+  font-size: var(--text-caption);
+}
+
+.edit {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  border-radius: 14px;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}

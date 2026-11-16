@@ -1,0 +1,33 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: calc(var(--tap) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) var(--space-3) 0 var(--space-2);
+}
+
+/* 48px target around a 24px arrow: easy to hit, quiet to look at. */
+.back {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  color: var(--text);
+  transition: background-color var(--fast) var(--ease);
+}
+
+.back:active {
+  background: var(--raised);
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  overflow: hidden;
+  font-size: var(--text-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

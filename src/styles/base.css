@@ -45,3 +45,35 @@ button {
     animation-duration: 1ms !important;
   }
 }
+
+/* Screens slide like a phone's: deeper comes in from the right, back goes out the right. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--slow);
+  animation-timing-function: var(--ease);
+}
+
+:root[data-nav="forward"]::view-transition-new(root) {
+  animation-name: in-from-right;
+}
+
+:root[data-nav="back"]::view-transition-old(root) {
+  animation-name: out-to-right;
+  z-index: 1;
+}
+
+:root[data-nav="back"]::view-transition-new(root) {
+  animation-name: none;
+}
+
+@keyframes in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes out-to-right {
+  to {
+    transform: translateX(100%);
+  }
+}

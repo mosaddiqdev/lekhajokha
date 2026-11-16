@@ -1,7 +1,7 @@
 import "fake-indexeddb/auto";
 import { beforeEach, describe, expect, it } from "vitest";
-import { listCustomerBaki } from "./customerBaki";
-import { addCustomer } from "./customers";
+import { getCustomerBaki, listCustomerBaki } from "./customerBaki";
+import { addCustomer, deleteCustomer } from "./customers";
 import { db } from "./db";
 import { addEntry, deleteEntry, entriesOf } from "./entries";
 
@@ -112,5 +112,34 @@ describe("listCustomerBaki", () => {
     expect(byName.Gopal?.baki).toBe(0);
     expect(byName.Gopal).not.toHaveProperty("lastEntryDate");
     expect(rows).toHaveLength(3);
+  });
+});
+
+describe("deleted customers", () => {
+  it("leave the list but keep their entries", async () => {
+    const ramesh = await addCustomer({ name: "Ramesh" });
+    const sita = await addCustomer({ name: "Sita" });
+    await addEntry({ customerId: ramesh.id, kind: "udhaar", lines: [{ text: "100" }] });
+    await deleteCustomer(ramesh.id);
+
+    const rows = await listCustomerBaki();
+    expect(rows.map((row) => row.customer.id)).toEqual([sita.id]);
+    expect(await getCustomerBaki(ramesh.id)).toBeNull();
+    expect(await db.entries.where("customerId").equals(ramesh.id).count()).toBe(1);
+  });
+});
+
+describe("getCustomerBaki", () => {
+  it("gives one customer's baki and how many entries count", async () => {
+    const ramesh = await addCustomer({ name: "Ramesh" });
+    const add = (text: string) =>
+      addEntry({ customerId: ramesh.id, kind: "udhaar", lines: [{ text }] });
+    await add("100");
+    const slip = await add("999");
+    await deleteEntry(slip.id);
+
+    const found = await getCustomerBaki(ramesh.id);
+    expect(found).toMatchObject({ baki: 10000, entryCount: 1 });
+    expect(await getCustomerBaki("nobody")).toBeNull();
   });
 });

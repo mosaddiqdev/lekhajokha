@@ -1,0 +1,45 @@
+.block {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.block .delete[data-tone] {
+  background: none;
+  color: var(--baki);
+}
+
+.block .delete[data-tone]:active {
+  background: var(--surface);
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-quiet);
+  font-size: var(--text-caption);
+  text-align: center;
+}
+
+.sheet {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text {
+  margin: 0;
+  color: var(--text-quiet);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}

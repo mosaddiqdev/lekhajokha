@@ -1,0 +1,14 @@
+/* A lightness step, not a shadow, lifts the list off the background. */
+.list {
+  margin: 0 var(--space-3);
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sheet);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--border);
+  list-style: none;
+}
+
+.item + .item {
+  box-shadow: inset 0 1px 0 var(--border);
+}

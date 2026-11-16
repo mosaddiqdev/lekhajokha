@@ -1,0 +1,28 @@
+.split {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  height: 100dvh;
+}
+
+.list {
+  min-width: 0;
+  border-right: 1px solid var(--border);
+}
+
+.detail {
+  display: grid;
+  min-width: 0;
+  background: var(--bg);
+}
+
+.detail > * {
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pick {
+  align-self: center;
+  color: var(--text-quiet);
+  text-align: center;
+}

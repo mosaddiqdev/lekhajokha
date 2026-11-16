@@ -1,0 +1,43 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 68px;
+  padding: var(--space-3) var(--space-4);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color var(--fast) var(--ease);
+}
+
+.row:active,
+.row[aria-current="page"] {
+  background: var(--raised);
+}
+
+.who,
+.money {
+  display: grid;
+  gap: 2px;
+}
+
+.who {
+  min-width: 0;
+}
+
+.money {
+  justify-items: end;
+}
+
+.name {
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.caption,
+.settled {
+  color: var(--text-quiet);
+  font-size: var(--text-caption);
+}

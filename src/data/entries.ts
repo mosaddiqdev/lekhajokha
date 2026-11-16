@@ -1,5 +1,6 @@
 import { MAX_PAISE, parseAmount } from "../engine/amount";
 import type { EntryKind } from "../engine/baki";
+import { today } from "../engine/days";
 import { db, type Entry, type EntryLine } from "./db";
 
 // The owner types lines like "2*45". The total is worked out here from those
@@ -50,9 +51,4 @@ export async function entriesOf(customerId: string): Promise<Entry[]> {
   return entries
     .filter((entry) => entry.deletedAt === undefined)
     .sort((a, b) => b.date.localeCompare(a.date) || b.createdAt - a.createdAt);
-}
-
-// Local date, not UTC: an entry made at 1am in India is still that day's.
-function today(): string {
-  return new Date().toLocaleDateString("en-CA");
 }
