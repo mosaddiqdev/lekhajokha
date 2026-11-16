@@ -11,7 +11,7 @@ export type AmountResult =
 
 // One crore rupees. No shop gives that much udhaar in one entry, so a number
 // this large is a slipped finger.
-const MAX_PAISE = 1_000_000_000n;
+export const MAX_PAISE = 1_000_000_000n;
 const MAX_TEXT_LENGTH = 80;
 // Loose goods are weighed to the gram: 0.125 kg is the finest the box needs.
 const MAX_DECIMALS = 3;
