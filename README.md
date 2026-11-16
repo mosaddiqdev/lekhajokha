@@ -6,12 +6,12 @@ The first user is one neighbourhood shop. Customers never log in.
 
 ## Status
 
-Built one small step at a time. Done so far: Step 0, the project foundation.
+Built one small step at a time. Done so far: Steps 0 and 1.
 
 | Step | What | Done |
 | --- | --- | --- |
 | 0 | Foundation | yes |
-| 1 | Amount engine (`2*45 + 120` to paise) | |
+| 1 | Amount engine (`2*45 + 120` to paise) | yes |
 | 2 | Data layer (customers, entries, baki) | |
 | 3 | Design system and keypad | |
 | 4 | Home: customer list, add customer | |
