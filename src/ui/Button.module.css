@@ -1,0 +1,70 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: 0;
+  border-radius: var(--radius-key);
+  font-size: var(--text-body);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform var(--fast) var(--ease),
+    background-color var(--fast) var(--ease);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.button:disabled:active {
+  transform: none;
+}
+
+.button[data-tone="save"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button[data-tone="save"]:not(:disabled):active {
+  background: color-mix(in oklab, var(--accent) 86%, white);
+}
+
+.button[data-tone="quiet"] {
+  background: var(--raised);
+  color: var(--text);
+}
+
+.button[data-tone="quiet"]:active {
+  background: var(--pressed);
+}
+
+/* The money colours tint the surface instead of flooding it, so red and green
+   stay a signal and never become decoration. */
+.button[data-tone="udhaar"] {
+  background: color-mix(in oklab, var(--baki) 16%, var(--surface));
+  color: var(--baki);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--baki) 28%, transparent);
+}
+
+.button[data-tone="udhaar"]:active {
+  background: color-mix(in oklab, var(--baki) 26%, var(--surface));
+}
+
+.button[data-tone="jama"] {
+  background: color-mix(in oklab, var(--jama) 16%, var(--surface));
+  color: var(--jama);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--jama) 28%, transparent);
+}
+
+.button[data-tone="jama"]:active {
+  background: color-mix(in oklab, var(--jama) 26%, var(--surface));
+}

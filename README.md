@@ -6,14 +6,14 @@ The first user is one neighbourhood shop. Customers never log in.
 
 ## Status
 
-Built one small step at a time. Done so far: Steps 0 to 2.
+Built one small step at a time. Done so far: Steps 0 to 3.
 
 | Step | What | Done |
 | --- | --- | --- |
 | 0 | Foundation | yes |
 | 1 | Amount engine (`2*45 + 120` to paise) | yes |
 | 2 | Data layer (customers, entries, baki) | yes |
-| 3 | Design system and keypad | |
+| 3 | Design system and keypad | yes |
 | 4 | Home: customer list, add customer | |
 | 5 | Customer ledger | |
 | 6 | Add entry | |
@@ -38,8 +38,10 @@ npm run format   # Biome lint and format
 
 ```
 src/
-  engine/     amount parser and the baki rule. No React, no browser APIs.
+  engine/     amount parser, baki rule, rupee format, keypad rules. No React, no browser APIs.
   data/       the phone database (Dexie): customers, entries, baki per customer
+  ui/         Button, Amount, Keypad, BottomSheet. Each has its own CSS module.
+  preview/    the design preview page, until Step 4 adds the real Home screen
   styles/     tokens.css (all colours), base.css
 ```
 

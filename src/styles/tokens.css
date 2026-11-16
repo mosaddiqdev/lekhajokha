@@ -1,19 +1,50 @@
-/* The only place colours live. Components read these, never hex values. */
+/* The only place colours, sizes and timings live. Components read these. */
 :root {
   color-scheme: dark;
 
+  /* Surfaces step up in lightness instead of casting shadows. */
   --bg: #151617;
   --surface: #1e1f21;
   --raised: #272829;
+  --pressed: #313234;
   --border: rgb(255 255 255 / 0.08);
+  --scrim: rgb(0 0 0 / 0.56);
 
   --text: #ece9e4;
   --text-quiet: #a19d96;
 
   /* Brass: Save, active state, focus. Nothing else. */
   --accent: #d9a441;
+  --on-accent: #151617;
 
   /* Money only: baki is owed to the shop, jama is money received. */
   --baki: #d6736b;
   --jama: #6fb58a;
+
+  --font: "Geist Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Type scale. Amounts are the hero, so they get the big steps. */
+  --text-hero: 3.5rem;
+  --text-amount: 2rem;
+  --text-title: 1.25rem;
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Nested shapes use concentric radii: inner = outer minus the gap. */
+  --radius-key: 16px;
+  --radius-sheet: 28px;
+
+  --tap: 56px;
+
+  /* Heavy start, soft landing. Everything that moves uses this one curve. */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --fast: 120ms;
+  --slow: 340ms;
 }
